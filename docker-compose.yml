@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+
+  db:
+    image: mysql:5.7.33
+    restart: always
+    environment:
+      MYSQL_DATABASE: django
+      MYSQL_USER: allan
+      MYSQL_PASSWORD: django
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - "33066:3306"
+
+  queue:
+    build: .
+    volumes:
+      - ./django_backend:/code
+    command: python consumer.py
+    depends_on: 
+      - db
+
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+    volumes:
+      - ./django_backend:/code
+    depends_on:
+      - db
