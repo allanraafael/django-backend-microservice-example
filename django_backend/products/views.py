@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from producer.publisher import publish
+from publisher import publish
 from .models import Product, User
 from .serializers import ProductSerializer
 
