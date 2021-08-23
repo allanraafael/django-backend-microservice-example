@@ -14,14 +14,6 @@ services:
     ports:
       - "33066:3306"
 
-  queue:
-    build: .
-    volumes:
-      - ./django_backend:/code
-    command: python consumer.py
-    depends_on: 
-      - db
-
   django:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -31,4 +23,14 @@ services:
     volumes:
       - ./django_backend:/code
     depends_on:
+      - db
+
+  queue:
+    image: allanrafaelfo/django-backend-microservice-example
+    env_file: 
+      - ./django_backend/.env
+    command: python consumer.py
+    volumes:
+      - ./django_backend:/code
+    depends_on: 
       - db

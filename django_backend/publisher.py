@@ -1,7 +1,7 @@
 import pika, json
 
 from django_backend.settings import CLOUDAMQP_URL
-
+from products.models import Product
 
 params = pika.URLParameters(CLOUDAMQP_URL)
 params.socket_timeout = 5

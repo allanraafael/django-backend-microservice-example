@@ -1,6 +1,8 @@
 import pika
+import json
 
 from django_backend import settings
+
 
 
 params = pika.URLParameters(settings.CLOUDAMQP_URL)
