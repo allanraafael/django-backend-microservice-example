@@ -26,11 +26,9 @@ services:
       - db
 
   queue:
-    image: allanrafaelfo/django-backend-microservice-example
-    env_file: 
-      - ./django_backend/.env
+    build: .
     command: python consumer.py
     volumes:
       - ./django_backend:/code
-    depends_on: 
-      - db
+    depends_on:
+      - django
