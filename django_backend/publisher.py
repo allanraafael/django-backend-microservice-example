@@ -1,4 +1,6 @@
-import pika, json
+import json
+
+import pika
 
 from django_backend.settings import CLOUDAMQP_URL
 from products.models import Product

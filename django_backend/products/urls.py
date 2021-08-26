@@ -2,7 +2,6 @@ from django.urls import path
 
 from .views import ProductViewSet, UserAPIView
 
-
 urlpatterns = [
     path('products', ProductViewSet.as_view({
         'get': 'list',

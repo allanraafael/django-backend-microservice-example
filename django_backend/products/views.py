@@ -1,11 +1,12 @@
 import random
 
-from rest_framework import viewsets, status
+from rest_framework import status, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from publisher import publish
+
 from .models import Product, User
 from .serializers import ProductSerializer
 
